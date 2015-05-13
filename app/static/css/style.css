@@ -1,39 +1,45 @@
-body {
-background: #f3f2f3;
-color: #000000;
-font-family: Trebuchet MS, Arial, Times New Roman;
-font-size: 12px;
+
+.list-area {
+  height:80%;
+  width: 15%;
+  float:left;
+  position:absolute;
+  background: pink;
+  margin : 5px;
+   clear:right;
 }
-#container1 {
-background: #FFFFFF;
-#margin: 30px auto;
-width: 100%;
-height: 100%;
+
+.content-area {
+  overflow: auto;
+  position: relative;
+  width: 100%;
+  height: 80%;
+  background:orange;
+  margin : 5px;
 }
-#header {
-background: #838283;
-height: 10%;
-width: 100%px;
+
+.footer {
+   background: red;
+   width:100%;
+   height: 10%;
 }
-#navigation {
-background: #aacc00;
-width: 100%;
-height: 5%;
+.height_header{
+   height: 5%;
+   background:orange;
 }
-#menu {
-background: #333333;
-float: left;
-width: 10%;
-height: 80%;
+
+.height_center{
+   height: 80%;
+   padding: 0px;
 }
-#content {
-background: #d2d0d2;
-float: right;
-width: 90%;
-height: 80%;
+.height_footer{
+   height: 10%;
 }
-#footer {
-background: #00ccaa;
-width: 100%;
-height: 15%;
+
+.scroll-1{
+  overflow: scroll;
+  height: 100%;
+}
+.no-padding{
+padding: 0px;
 }
