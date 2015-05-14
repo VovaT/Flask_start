@@ -1,7 +1,7 @@
  <!--
  style ='background-color: #2ba6cb;'
  -->
-
+<!--
     <ul class="list-group scroll-1">
       <li class="list-group-item no-padding disabled" > Cras justo odio</li>
       <li class="list-group-item no-padding" >Dapibus ac facilisis in</li>
@@ -9,3 +9,20 @@
       <li class="list-group-item no-padding" >Porta ac consectetur ac</li>
       <li class="list-group-item no-padding" >Vestibulum at eros</li>
     </ul>
+-->
+
+ <ul class="list-group scroll-1">
+     {% for _title  in my_arr %}
+     <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id={{_title.name}} data-toggle="dropdown" aria-expanded="true">
+            {{_title.name}}
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby={{_title.name}}>
+          {% for _prop  in _title.prop %}
+              <li role="presentation">{{_prop}}</li>
+          {% endfor %}
+         </ul>
+      </div>
+
+     {% endfor %}
+ </ul>
