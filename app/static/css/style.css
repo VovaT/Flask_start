@@ -43,3 +43,26 @@
 .no-padding{
 padding: 0px;
 }
+.scalix_menu_target:hover{
+ background: rgba(3,0,255,0.5); /* Цвет фона */
+ }
+
+.scalix_menu{
+ font-weight: bold;
+ font-style:oblique;
+ display: none;
+ position: fixed;
+ #position: absolute;
+ overflow: hidden;
+ z-index: 1000;
+ border: 1px solid #CCC;
+ background: #ccc;
+ #float:right;
+ border-radius: 5px;
+}
+
+.scalix_menu_item:hover {
+
+ background: rgba(3,0,255,0.7); /* Цвет фона */
+
+}

@@ -13,15 +13,13 @@
 
  <ul class="list-group scroll-1">
      {% for _title  in my_arr %}
-     <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id={{_title.name}} data-toggle="dropdown" aria-expanded="true">
-            {{_title.name}}
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby={{_title.name}}>
+     <div class="scalix_menu_target">
+         {{_title.name}}
+          <div class="scalix_menu">
           {% for _prop  in _title.prop %}
-              <li role="presentation">{{_prop}}</li>
+              <div class="scalix_menu_item"> {{_prop}}d</div>
           {% endfor %}
-         </ul>
+          </div>
       </div>
 
      {% endfor %}
