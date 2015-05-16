@@ -12,3 +12,7 @@ class Test_m(object):
         for a in range(5):
             ret.append(str(self._item) + 'Proper#' + str(a))
         return ret
+
+    @property
+    def sub_menu(self):
+        pass
