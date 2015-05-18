@@ -49,6 +49,7 @@
     {%- for item in my_arr %}
         <div class="list_item"> {{item['name']}}
             {%- if item['submenu'] -%}
+                ->
                 {% call submenu(item['submenu']) %}
                 {% endcall %}
             {%- endif %}

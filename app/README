@@ -1,29 +1,30 @@
-1. add actions to list
-2. add actions to menu
+1) add actions to list
+2)
 3) create submenu
     V| 3-1) show/ hide context menu
     V| 3-2) add submenu
     V| 3-3) add actions for menu and submenu
     V| 3-4) several levels of submenu
+    V| 3-5) submenu position against menu item
 
 
 
 ----------- nemu with submenus ----------------
-test1:name (only show popup or/and action)
+test1:name (only show popup)
      ww1:name (action)
      ww2:name (action)
-     ww3:name (only show popup or/and action)
+     ww3:name (only show popup)
          ss1:name (action)
          ss2:name (action)
      ww4:name (action)
 test2:name (action)
-test3:name (only show popup or/and action)
+test3:name (only show popup)
      aa1:name (action)
      aa2:name (action)
-     aa3:name (only show popup or/and action)
+     aa3:name (only show popup)
          xx1:name (action)
          xx2:name (action)
-         xx3:name (only show popup or/and action)
+         xx3:name (only show popup)
              zz1:name (action)
              zz2:name (action)
 1) all data in array of dicts where:

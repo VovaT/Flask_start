@@ -1,3 +1,14 @@
+// hide menu when button pressed not on element or not on element all children
+function reg_mouseup_event(element){
+     $(document).mouseup(function (e){ // событие клика по веб-документу
+         if (!element.is(e.target) // если клик был не по нашему блоку
+		            && element.has(e.target).length === 0) { // и не по его дочерним элементам
+	         element.find('.submenu').hide()
+			 element.hide(); // скрываем его
+		 }
+	 });
+}
+
 (function($, undefined){
     //var a = $(document.getElementsByClassName("scalix_menu"))
     //console.log(a);
@@ -8,14 +19,9 @@
             s = $(this).children().css({"top": event.pageY +  "px", "left": event.pageX +  "px"}).show();
         }
     });
-
-    $(document).mouseup(function (e){ // событие клика по веб-документу
-		var div = $(".scalix_menu"); // тут указываем ID элемента
-		if (!div.is(e.target) // если клик был не по нашему блоку
-		    && div.has(e.target).length === 0) { // и не по его дочерним элементам
-			div.hide(); // скрываем его
-		}
-	});
+    var el = $(".scalix_menu");
+    // hide menu when button pressed not on element or not on element all children
+    reg_mouseup_event(el)
 
     $(document).bind("click", function(e){
         if (!$(e.target).parents(".scalix_menu_target").length > 0) {
@@ -36,44 +42,38 @@
     var def_width = 50;
     var w;
     $(".list_item").bind("contextmenu", function(e) {
-        console.log($(this).children())
+
+        //console.log($(this).children())
+
         e.preventDefault();
         element = $(this).children()
+        //console.log($(this).with(), $(this).height())
         var s;
         if ($(this).children().css('display') == 'none'){
             s = $(this).children().css({"top": event.pageY +  "px", "left": event.pageX +  "px"}).show();
             //$(s).width(def_width);
         }
-
         // hide menu when button pressed not on element or not on element all children
-        $(document).mouseup(function (e){ // событие клика по веб-документу
-   		        if (!element.is(e.target) // если клик был не по нашему блоку
-		            && element.has(e.target).length === 0) { // и не по его дочерним элементам
-			        element.find('.submenu').hide()
-			        element.hide(); // скрываем его
-		        }
-	        });
+        reg_mouseup_event(element)
+
      });
 
     $(".menu_item").bind("click", function(e) {
         //console.log($(this).children())
+         //console.log($(this).offset().left, $(this).width())
+         var tX = $(this).offset().left + $(this).width()
+         var tY = $(this).offset().top
         e.preventDefault();
         //element = $(this).children()
         var s;
         if ($(this).children().css('display') == 'none'){
-            s = $(this).children().css({"top": event.pageY +  "px", "left": event.pageX +  "px"}).show();
+            //s = $(this).children().css({"top": event.pageY +  "px", "left": event.pageX +  "px"}).show();
+            s = $(this).children().css({"top": tY +  "px", "left": tX +  "px"}).show();
             //$(s).width(def_width);
         }
-
         if (s){
-            $(document).mouseup(function (e){ // событие клика по веб-документу
-   		        if (!s.is(e.target) // если клик был не по нашему блоку
-		            && s.has(e.target).length === 0) { // и не по его дочерним элементам
-			        s.find('.submenu').hide()
-			        s.hide(); // скрываем его
-
-		        }
-	        });
+            // hide menu when button pressed not on element or not on element all children
+            reg_mouseup_event(s)
 	    }
     });
 

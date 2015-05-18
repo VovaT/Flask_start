@@ -100,7 +100,7 @@ font-weight: bold;
  #position: absolute;
  overflow: hidden;
  z-index: 1000;
- border: 2px solid #0CC;
+ border: 1px solid #0CC;
  background: #ccc;
  #float:right;
  border-radius: 5px;
@@ -122,9 +122,5 @@ font-weight: bold;
 }
 
 .menu_item:hover{
- background: rgba(3,0,255,0.7); /* Цвет фона */
-}
-
-.menu:hover{
  background: rgba(3,0,255,0.7); /* Цвет фона */
 }
