@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 .idea/dictionaries/techn.xml
 .idea/workspace.xml
-*.xml
-*.xml
 app/README
 config.py
+.config.py
+/config.py
