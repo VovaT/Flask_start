@@ -1,8 +1,10 @@
 __author__ = 'vth'
 from app import app
 from flask import render_template
-from scalix.ObjectList import *
 
+
+from scalix.ObjectList import *
+Test_m(2)
 '''
 @app.route('/')
 @app.route('/index')
