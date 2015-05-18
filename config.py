@@ -1,3 +1,3 @@
 
-SERVERS = ['']
+SERVERS = ['test']
 
