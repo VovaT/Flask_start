@@ -1,0 +1,49 @@
+<html>
+<head>
+
+     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/style.css') }}">
+     <script src="http://code.jquery.com/jquery-latest.js"></script>
+       <!--  <script type=text/javascript src="{{url_for('static', filename='js/jquery-1.11.3.js') }}"></script> -->
+     <script type=text/javascript src="{{url_for('static', filename='js/bootstrap.js') }}"></script>
+
+     <title>test </title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<!--
+{%- for item in my_arr recursive %}
+    {{item['name']}}
+     <br>
+    {%- if item['submenu'] -%}
+        {{ loop(item['submenu']) }}
+    {%- endif %}
+
+{%- endfor %}
+-->
+{% macro submenu(elements) -%}
+<div class="menu">
+{%- for item in elements recursive %}
+        {%- if item['submenu'] -%}
+               <div class="menu_item" >
+                   {{item.name}} -->
+                   <div class="submenu">{{ loop(item['submenu']) }}</div>
+               </div>
+        {% else %}
+               <div class="menu_item" onclick="sx_action(this,'{{item['action']}}')">
+                   {{item.name}}
+               </div>
+        {%- endif %}
+{%- endfor %}
+</div>
+{%- endmacro %}
+<script type=text/javascript src="{{url_for('static', filename='js/scalix.js') }}"></script>
+</html>
+
+
+"""
+ <!-- {%- if item['submenu'] -%}
+                {% call submenu(item['submenu']) %}
+                 {% endcall %}
+            {%- endif %}
+           -->
+"""

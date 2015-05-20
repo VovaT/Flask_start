@@ -1,14 +1,4 @@
 
-.list-area {
-  height:80%;
-  width: 15%;
-  float:left;
-  position:absolute;
-  background: pink;
-  margin : 5px;
-   clear:right;
-}
-
 .content-area {
   overflow: auto;
   position: relative;
@@ -39,7 +29,98 @@
 .scroll-1{
   overflow: scroll;
   height: 100%;
+  border-radius: 5px;
 }
 .no-padding{
 padding: 0px;
+}
+
+
+
+.list-area {
+  height:80%;
+  width: 15%;
+  float:left;
+  position:absolute;
+  background: pink;
+  margin : 5px;
+  clear:right;
+   border-radius: 5px;
+   background: #ccc;
+
+}
+.list-group{
+ font-weight: bold;
+ font-style:oblique;
+ #display: none;
+ #position: fixed;
+ #position: absolute;
+ overflow: hidden;
+ #z-index: 1000;
+ #border: 1px solid #CCC;
+ background: #ccc;
+ #float:right;
+ border-radius: 5px;
+ #min-width: 100px;
+ #max-width: 200px;
+}
+.list_item:hover {
+          background: rgba(3,0,255,0.7); /* Цвет фона */
+}
+
+.scalix_menu_target:hover{
+ background: rgba(3,0,255,0.5); /* Цвет фона */
+ }
+
+.scalix_menu{
+ font-weight: bold;
+ font-style:oblique;
+ display: none;
+ position: fixed;
+ #position: absolute;
+ overflow: hidden;
+ z-index: 1000;
+ border: 1px solid #CCC;
+ background: #ccc;
+ #float:right;
+ border-radius: 5px;
+}
+
+.scalix_menu_item:hover {
+ background: rgba(3,0,255,0.7); /* Цвет фона */
+}
+
+
+
+.submenu, .menu{
+font-weight: bold;
+ font-style:oblique;
+ display: none;
+ position: fixed;
+ #position: absolute;
+ overflow: hidden;
+ z-index: 1000;
+ border: 1px solid #0CC;
+ background: #ccc;
+ #float:right;
+ border-radius: 5px;
+ min-width: 100px;
+ max-width: 200px;
+}
+
+
+.menu_item{
+ font-weight: bold;
+ font-style:oblique;
+ #position: fixed;
+ #position: absolute;
+ #overflow: hidden;
+ border: 1px solid #CCC;
+ background: #ccc;
+ #float:right;
+ border-radius: 5px;
+}
+
+.menu_item:hover{
+ background: rgba(3,0,255,0.7); /* Цвет фона */
 }
