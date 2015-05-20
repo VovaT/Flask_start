@@ -1,6 +1,8 @@
 __author__ = 'vth'
+
 from app import app
 from flask import render_template
+from flask import request
 from scalix.ScalixActions import *
 
 
@@ -15,7 +17,19 @@ def index():
 '''
 
 sxac = ScalixActions()
+sxjs = ScalixJson()
 
+@app.route('/object/', methods=['GET'])
+def get_object():
+    data = request.args
+    status, JSONdata = sxjs.get(data['server_url'] + '/object_all_attrs/%s' % data['id'])
+    # print(status)
+    # print(JSONdata)
+    # print(json.dumps(JSONdata))
+    if status == 200:
+        return json.dumps(JSONdata)
+    else:
+        return json.dumps(dict())
 
 @app.route('/')
 @app.route('/index')

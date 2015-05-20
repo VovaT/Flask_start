@@ -1,5 +1,4 @@
 import config as CONFIG
-import requests
 import json
 import logging
 import requests
@@ -75,11 +74,14 @@ class ScalixObject(object):
 
 class ScalixUser(ScalixObject):
 
-    def __init__(self, attrs=[]):
+    def __init__(self, attrs=[], server = ''):
         ScalixObject.__init__(self, attrs)
+        self.server_url = server
 
     def get_user_info(self):
-        return dict(gid=self.gid, action='user_info')
+        return dict(cn='user_info', gid=self.gid, action='user_info', server_url=self.server_url)
+        # submenu=[dict(cn='sub', gid=self.gid, action='user_info_sub')])
+
 
     def get_menu_items(self):
         ret = []
@@ -99,7 +101,7 @@ class ScalixActions(object):
         resp, userlist = self.sxjs.get(self.protocol + self.server + '/user_names/%s' % mailnode)
         if resp == 200:
             for _item in userlist:
-                yield (ScalixUser(_item))
+                yield (ScalixUser(_item, self.protocol + self.server))
 
     def show_user_info(self):
         pass

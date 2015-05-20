@@ -4,13 +4,13 @@
     {%- for item in elements recursive %}
         {%- if item['submenu'] -%}
                <div class="menu_item" >
-                   {{item.name}} -->
+                   {{item['cn']}} -->
                    <div class="submenu">{{ loop(item['submenu']) }}</div>
                </div>
         {% else %}
                <!--<div class="menu_item" onclick="sx_action(this,'{{item['action']}}')">-->
-               <div class="menu_item">
-                   {{item.name}}
+               <div class="menu_item" gid={{item['gid']}} server_url={{item['server_url']}}>
+                   {{item['cn']}}
                </div>
         {%- endif %}
     {%- endfor %}
@@ -21,9 +21,9 @@
  <div class="list-group scroll-1">
     {%- for item in my_arr %}
         <div class="list_item"> {{item.cn}}
-            {%- if item['submenu'] -%}
+            {%- if item.get_menu_items -%}
                 ->
-                {% call submenu(item['submenu']) %}
+                {% call submenu(item.get_menu_items()) %}
                 {% endcall %}
             {%- endif %}
         </div>

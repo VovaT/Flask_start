@@ -8,6 +8,31 @@ function reg_mouseup_event(element){
 		 }
 	 });
 }
+
+function button_action(event){
+            //console.log($(this));
+            //console.log($(event.currentTarget));
+            //console.log($(event.currentTarget).parent());
+    $(event.currentTarget).parent().hide();
+    if (event.target.hasAttribute('gid')){
+        var gid = event.target.getAttribute('gid');
+        var server_url = event.target.getAttribute('server_url');
+        //console.log(server_url);
+        $.getJSON(
+            '/object',
+            {'id': gid, 'server_url': server_url},
+            function(data){
+                //console.log(data)
+                var _text = '';
+                for (var item in data){
+                    _text += item + '=' + data[item]+ "<br>"
+                }
+                //console.log(_text)
+                $("div.main_area").html(_text)
+            }
+        );
+    }
+}
 /*
 (function($, undefined){
     console.log('ov', $(".scroll-1").css('overflow'))
@@ -47,7 +72,7 @@ function reg_mouseup_event(element){
     $(".list_item").bind("contextmenu", function(e) {
 
         //console.log($(this).children())
-        console.log($(this))
+        //console.log($(this))
         e.preventDefault();
         element = $(this).children()
         //console.log($(this).with(), $(this).height())
@@ -60,9 +85,8 @@ function reg_mouseup_event(element){
         reg_mouseup_event(element)
 
      });
-
     $(".menu_item").bind("click", function(e) {
-
+        button_action(e)
         //console.log($(this).children())
          //console.log($(this).offset().left, $(this).width())
          var tX = $(this).offset().left + $(this).width()
@@ -88,5 +112,3 @@ function sx_action(el, action_a) {
 }
 */
 })(jQuery);
-
-
