@@ -8,8 +8,9 @@ function reg_mouseup_event(element){
 		 }
 	 });
 }
-
+/*
 (function($, undefined){
+    console.log('ov', $(".scroll-1").css('overflow'))
     //var a = $(document.getElementsByClassName("scalix_menu"))
     //console.log(a);
     //console.log(this)
@@ -30,10 +31,12 @@ function reg_mouseup_event(element){
     });
 
 })(jQuery);
-
+*/
 
 
 (function($, undefined){
+    console.log('ov', $(".scroll-1").css('overflow'))
+     console.log($(this))
     //var a = $(document.getElementsByClassName("scalix_menu"))
     //console.log(a);
     //console.log(this)
@@ -44,7 +47,7 @@ function reg_mouseup_event(element){
     $(".list_item").bind("contextmenu", function(e) {
 
         //console.log($(this).children())
-
+        console.log($(this))
         e.preventDefault();
         element = $(this).children()
         //console.log($(this).with(), $(this).height())
@@ -59,6 +62,7 @@ function reg_mouseup_event(element){
      });
 
     $(".menu_item").bind("click", function(e) {
+
         //console.log($(this).children())
          //console.log($(this).offset().left, $(this).width())
          var tX = $(this).offset().left + $(this).width()

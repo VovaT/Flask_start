@@ -1,31 +1,4 @@
- <!--
- style ='background-color: #2ba6cb;'
- -->
-<!--
-    <ul class="list-group scroll-1">
-      <li class="list-group-item no-padding disabled" > Cras justo odio</li>
-      <li class="list-group-item no-padding" >Dapibus ac facilisis in</li>
-      <li class="list-group-item no-padding" >Morbi leo risus</li>
-      <li class="list-group-item no-padding" >Porta ac consectetur ac</li>
-      <li class="list-group-item no-padding" >Vestibulum at eros</li>
-    </ul>
--->
 
- <!--
- <ul class="list-group scroll-1">
-     {% for _title  in my_arr %}
-     <div class="scalix_menu_target">
-         {{_title.name}}
-          <div class="scalix_menu">
-          {% for _prop  in _title.prop %}
-              <div class="scalix_menu_item"> {{_prop}}d</div>
-          {% endfor %}
-          </div>
-      </div>
-
-     {% endfor %}
- </ul>
-  -->
 {% macro submenu(elements) -%}
 <div class="menu">
     {%- for item in elements recursive %}
@@ -47,7 +20,7 @@
 
  <div class="list-group scroll-1">
     {%- for item in my_arr %}
-        <div class="list_item"> {{item['name']}}
+        <div class="list_item"> {{item.cn}}
             {%- if item['submenu'] -%}
                 ->
                 {% call submenu(item['submenu']) %}

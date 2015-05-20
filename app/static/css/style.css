@@ -27,7 +27,8 @@
 }
 
 .scroll-1{
-  overflow: scroll;
+  #overflow: scroll !important;
+  overflow: scroll ;
   height: 100%;
   border-radius: 5px;
 }
@@ -55,7 +56,6 @@ padding: 0px;
  #display: none;
  #position: fixed;
  #position: absolute;
- overflow: hidden;
  #z-index: 1000;
  #border: 1px solid #CCC;
  background: #ccc;

@@ -1,10 +1,9 @@
 __author__ = 'vth'
 from app import app
 from flask import render_template
+from scalix.ScalixActions import *
 
 
-from scalix.ObjectList import *
-Test_m(2)
 '''
 @app.route('/')
 @app.route('/index')
@@ -14,6 +13,8 @@ def index():
     return render_template('main.html', my_arr = doubles)
     #return render_template('object_list.html')
 '''
+
+sxac = ScalixActions()
 
 
 @app.route('/')
@@ -48,5 +49,6 @@ def index():
             ])
         ]),
     ]
-    return render_template('main.html', my_arr=my_dd)
+
+    return render_template('main.html', my_arr=sxac.get_user_list())
     # return render_template('object_list.html')
