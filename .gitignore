@@ -41,3 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.xml
+*.iml
+*.xml
+.idea/Flask_start.iml
+.idea/workspace.xml
+*.xml
