@@ -68,6 +68,19 @@ class ScalixObject(object):
         pass
 
     @property
+    def OU1(self):
+        return self.attrs.get('OU1','')
+
+    @property
+    def OU1_location_url(self):
+        url = CONFIG.MAILNODES.get(self.OU1, '')
+        if len(url) == 0:
+            return ''
+        if url[-1] != '/':
+            url += '/'
+        return url
+
+    @property
     def gid(self):
         return self.attrs.get('GLOBAL-UNIQUE-ID', None)
 
@@ -78,30 +91,28 @@ class ScalixUser(ScalixObject):
         ScalixObject.__init__(self, attrs)
         self.server_url = server
 
-    def get_user_info(self):
-        return dict(cn='user_info', gid=self.gid, action='user_info', server_url=self.server_url)
-        # submenu=[dict(cn='sub', gid=self.gid, action='user_info_sub')])
-
+    def generate_menu_item(self, item_name, action):
+        return dict(cn=item_name, gid=self.gid, action=action, mailnode=self.OU1)
 
     def get_menu_items(self):
         ret = []
-        ret.append(self.get_user_info())
+        ret.append(self.generate_menu_item(item_name='user_info', action="object_all_attrs"))
+        ret.append(self.generate_menu_item(item_name='CN', action="object"))
         return ret
 
 
 class ScalixActions(object):
 
     def __init__(self):
-        self.protocol = CONFIG.PROTOCOL
         self.server = CONFIG.SERVER
         self.sxjs = ScalixJson()
 
     def get_user_list(self):
         mailnode = 'all'
-        resp, userlist = self.sxjs.get(self.protocol + self.server + '/user_names/%s' % mailnode)
+        resp, userlist = self.sxjs.get(self.server + '/user_names/%s' % mailnode)
         if resp == 200:
             for _item in userlist:
-                yield (ScalixUser(_item, self.protocol + self.server))
+                yield (ScalixUser(_item, self.server))
 
     def show_user_info(self):
         pass

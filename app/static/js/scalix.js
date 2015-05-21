@@ -16,11 +16,12 @@ function button_action(event){
     $(event.currentTarget).parent().hide();
     if (event.target.hasAttribute('gid')){
         var gid = event.target.getAttribute('gid');
-        var server_url = event.target.getAttribute('server_url');
+        var action = event.target.getAttribute('action');
+        var mailnode = event.target.getAttribute('mailnode');
         //console.log(server_url);
         $.getJSON(
             '/object',
-            {'id': gid, 'server_url': server_url},
+            {'id': gid, 'action': action, 'mailnode': mailnode},
             function(data){
                 //console.log(data)
                 var _text = '';

@@ -9,7 +9,7 @@
                </div>
         {% else %}
                <!--<div class="menu_item" onclick="sx_action(this,'{{item['action']}}')">-->
-               <div class="menu_item" gid={{item['gid']}} server_url={{item['server_url']}}>
+               <div class="menu_item" gid={{item['gid']}} action={{item['action']}} mailnode={{item['mailnode']}}>
                    {{item['cn']}}
                </div>
         {%- endif %}

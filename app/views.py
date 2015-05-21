@@ -22,9 +22,14 @@ sxjs = ScalixJson()
 @app.route('/object/', methods=['GET'])
 def get_object():
     data = request.args
-    status, JSONdata = sxjs.get(data['server_url'] + '/object_all_attrs/%s' % data['id'])
-    # print(status)
-    # print(JSONdata)
+    url = CONFIG.MAILNODES.get(data['mailnode'],'')
+    if len(url) == 0:
+        return json.dumps(dict())
+    if url[-1] != '/':
+        url += '/'
+    status, JSONdata = sxjs.get(url + data['action'] + '/' + data['id'])
+    #print(status)
+    #print(JSONdata)
     # print(json.dumps(JSONdata))
     if status == 200:
         return json.dumps(JSONdata)
