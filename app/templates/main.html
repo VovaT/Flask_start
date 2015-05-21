@@ -17,18 +17,22 @@
 <body>
 <div class="container-fluid">
     <div class="row-fluid height_header"  >
-      test
+      header
     </div>
-    <div class="row-fluid" >
-        <div class="col-md-2 height_center" style ='background-color: #2ba600;'>
+
+    <div class="row-fluid height_navigation"  >
+        navigation
+    </div>
+    <div class="row-fluid height_center" >
+        <div class="col-md-2 nopadding pad"   >
             <!--{% block object_list %}{% endblock %}-->
             {% include 'object_list.html' %}
         </div>
-        <div class="col-md-10 height_center main_area" style ='background-color: #00a6cb;' >bbb</div>
+        <div class="col-md-10 nopadding main_area"></div>
     </div>
-    <div class="row-fluid height_footer">
-      ssadfghjjk
-    </div>
+
+    <div class="row-fluid height_footer ">ssadfghjjk</div>
+
 </div>
 
 </body>
