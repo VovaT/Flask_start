@@ -1,9 +1,17 @@
-__author__ = 'vth'
 
 from app import app
 from flask import render_template
+from flask import session
 from flask import request
 from scalix.ScalixActions import *
+from flask import redirect
+from flask import url_for
+
+from APIs import *
+from testsAPI import *
+
+from pprint import pprint
+app.config.update(dict(SECRET_KEY='development key adsfghj'))
 
 
 '''
@@ -16,29 +24,68 @@ def index():
     #return render_template('object_list.html')
 '''
 
-sxac = ScalixActions()
-sxjs = ScalixJson()
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin':
+            error = 'Invalid username'
+        elif request.form['password'] != 'a':
+            error = 'Invalid password'
+        else:
+            session['logged_in'] = True
+            ac_log.push('User %s is log in' % request.form['username'])
+            return redirect('')
+    return render_template('login.html', error=error)
 
-@app.route('/object/', methods=['GET'])
-def get_object():
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    ac_log.push('User %s log out ' % request.form['username'])
+    return redirect('')
+
+@app.route('/get_log/', methods=['GET'])
+def get_log():
     data = request.args
-    url = CONFIG.MAILNODES.get(data['mailnode'],'')
-    if len(url) == 0:
-        return json.dumps(dict())
-    if url[-1] != '/':
-        url += '/'
-    status, JSONdata = sxjs.get(url + data['action'] + '/' + data['id'])
-    #print(status)
-    #print(JSONdata)
-    # print(json.dumps(JSONdata))
-    if status == 200:
-        return json.dumps(JSONdata)
-    else:
-        return json.dumps(dict())
+    last_id = int(data['last_id'])
+    print(last_id)
+    # print(json.dumps(ac_log.get_rest_records(last_id)))
+    return json.dumps(ac_log.get_rest_records(last_id))
+
+user_view = UserAPI.as_view('user_api')
+app.add_url_rule('/users/', defaults={'user_id': None}, view_func=user_view, methods=['GET'])
+app.add_url_rule('/users/<user_id>', view_func=user_view, methods=['GET', 'PUT', 'DELETE'])
+app.add_url_rule('/users/', view_func=user_view, methods=['POST'])
+
+group_view = GroupAPI.as_view('group_api')
+app.add_url_rule('/groups/', defaults={'group_id': None}, view_func=group_view, methods=['GET'])
+#app.add_url_rule('/users/<user_id>', view_func=user_view, methods=['GET', 'PUT', 'DELETE'])
+#app.add_url_rule('/users/', view_func=user_view, methods=['POST'])
+
+
+obj_view = ObjectAPI.as_view('scalix_object_api')
+app.add_url_rule('/object/', defaults={'object_gid': None}, view_func=obj_view, methods=['GET'])
+app.add_url_rule('/object/<object_gid>', view_func=obj_view, methods=['GET', 'PUT', 'DELETE'])
+
+user_view = TestAPI.as_view('test_api')
+app.add_url_rule('/object/<path:object_gid>/test/<item>', defaults={'object_gid': None, 'item': None},
+                 view_func=obj_view, methods=['GET'])
+
 
 @app.route('/')
 @app.route('/index')
 def index():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('main.html', my_arr=sxac.get_user_list())
+
+
+"""
+@app.route('/')
+@app.route('/index')
+def index():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
     # return "Hello, World!"
     my_dd = [
         dict(name='test1___________', submenu=[
@@ -68,6 +115,6 @@ def index():
             ])
         ]),
     ]
-
     return render_template('main.html', my_arr=sxac.get_user_list())
     # return render_template('object_list.html')
+"""

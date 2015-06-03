@@ -1,31 +1,41 @@
+<head>
+     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/list.css') }}">
+    <script type=text/javascript src="{{url_for('static', filename='js/actions.js') }}"></script>
+</head>
 
 {% macro submenu(elements) -%}
-<div class="menu">
-    {%- for item in elements recursive %}
-        {%- if item['submenu'] -%}
-               <div class="menu_item" >
-                   {{item['cn']}} -->
-                   <div class="submenu">{{ loop(item['submenu']) }}</div>
-               </div>
-        {% else %}
-               <!--<div class="menu_item" onclick="sx_action(this,'{{item['action']}}')">-->
-               <div class="menu_item" gid={{item['gid']}} action={{item['action']}} mailnode={{item['mailnode']}}>
-                   {{item['cn']}}
-               </div>
-        {%- endif %}
-    {%- endfor %}
-</div>
+    <div class="menu">
+        {%- for item in elements recursive %}
+             {%- if item['submenu'] -%}
+                 <div class="menu_item" >
+                     {{item['cn']}} -->
+                     <div class="submenu">{{ loop(item['submenu']) }}</div>
+                 </div>
+             {% else %}
+                  <!--<div class="menu_item" onclick="sx_action(this,'{{item['action']}}')">-->
+                   <div class="menu_item" gid={{item['gid']}} action={{item['action']}} mailnode={{item['mailnode']}}>
+                       {{item['cn']}}
+                   </div>
+             {%- endif %}
+        {%- endfor %}
+    </div>
     {{ caller() }}
 {%- endmacro %}
 
- <div class="list-group scroll-1">
-    {%- for item in my_arr %}
-        <div class="list_item"> {{item.cn}}
-            {%- if item.get_menu_items -%}
-                ->
-                {% call submenu(item.get_menu_items()) %}
-                {% endcall %}
-            {%- endif %}
-        </div>
-    {%- endfor %}
+ <div class="list-group">
+    <div class="scroll-area">
+        {%- for item in my_arr %}
+            <div class="list_item" gid={{item.gid}} action='object_all_attrs' mailnode={{item.mailnode}}> {{item.cn}}
+                {%- if item.get_menu_items -%}
+                    ->
+                    {% call submenu(item.get_menu_items()) %}
+                    {% endcall %}
+                {%- endif %}
+            </div>
+        {%- endfor %}
+    </div>
+    <div>
+        <button type="button" class="btn btn-default"  >Create</button>
+        <button type="button" class="btn btn-default" onclick="delete_active_items();">Delete</button>
+    </div>
 </div>

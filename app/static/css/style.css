@@ -5,9 +5,15 @@
 
 }
 
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
 .pad{
+ #border: 1px solid #A00 !important;
  padding-top: 25px;
  }
+
 .height_navigation{
     background: #ca0;
     border-radius: 5px;
@@ -20,56 +26,34 @@
 
 .height_footer{
     border-radius: 5px;
-    height: 10% ;
+    height: 15% ;
+    width: 100%;
     border: 1px solid #Ac0 !important;
 
 }
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
+
+
+
+.scroll-footer{
+# overflow-x:visible;
+overflow-y: scroll;
 }
-.scroll-1{
-  #overflow: scroll !important;
-  overflow: scroll ;
-  height: 100%;
-  border-radius: 5px;
-  padding: 0px;
+
+.log_item:nth-child(2n) {
+ background: rgba(10,120,0,0.5); /* Цвет фона */
 }
+.log_item:hover {
+ background: rgba(3,0,255,0.7); /* Цвет фона */
+}
+
 .no-padding{
 padding: 0px;
 }
 
 
 
-.list-area {
-  height:70%;
-  width: 15%;
-  float:left;
-  position:absolute;
-  background: pink;
-  margin : 5px;
-  clear:right;
-   border-radius: 5px;
-   background: #ccc;
 
-}
-.list-group{
- font-weight: bold;
- font-style:oblique;
- #display: none;
- #position: fixed;
- #position: absolute;
- #z-index: 1000;
- #border: 1px solid #CCC;
- background: #ccc;
- #float:right;
- border-radius: 5px;
- #min-width: 100px;
- #max-width: 200px;
-}
-.list_item:hover {
-          background: rgba(3,0,255,0.7); /* Цвет фона */
-}
+
 
 .scalix_menu_target:hover{
  background: rgba(3,0,255,0.5); /* Цвет фона */
@@ -90,6 +74,7 @@ padding: 0px;
 }
 
 .scalix_menu_item:hover {
+
  background: rgba(3,0,255,0.7); /* Цвет фона */
 }
 
@@ -113,16 +98,19 @@ font-weight: bold;
 
 
 .menu_item{
+ border: 1px solid rgba(0,255,0,0.7);
  font-weight: bold;
  font-style:oblique;
  #position: fixed;
  #position: absolute;
  #overflow: hidden;
- border: 1px solid #CCC;
+ #border: 1px solid #CCC;
+ border: 1px solid rgba(0,255,0,0.7);
  background: #ccc;
  #float:right;
  border-radius: 5px;
 }
+
 
 .menu_item:hover{
  background: rgba(3,0,255,0.7); /* Цвет фона */

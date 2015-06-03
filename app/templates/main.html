@@ -5,6 +5,7 @@
      <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/style.css') }}">
      <script src="http://code.jquery.com/jquery-latest.js"></script>
        <!--  <script type=text/javascript src="{{url_for('static', filename='js/jquery-1.11.3.js') }}"></script> -->
+
      <script type=text/javascript src="{{url_for('static', filename='js/bootstrap.js') }}"></script>
 
      <title>test </title>
@@ -16,22 +17,42 @@
 
 <body>
 <div class="container-fluid">
+
     <div class="row-fluid height_header"  >
       header
     </div>
 
     <div class="row-fluid height_navigation"  >
-        navigation
-    </div>
-    <div class="row-fluid height_center" >
-        <div class="col-md-2 nopadding pad"   >
-            <!--{% block object_list %}{% endblock %}-->
-            {% include 'object_list.html' %}
-        </div>
-        <div class="col-md-10 nopadding main_area"></div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#users">Users</a></li>
+            <li><a data-toggle="tab" href="#groups">Groups</a></li>
+        </ul>
     </div>
 
-    <div class="row-fluid height_footer ">ssadfghjjk</div>
+    <div class="row-fluid height_center" >
+        <div class="tab-content" >
+
+            <div id="users" class="tab-pane fade in active">
+                <div class="col-md-2  nopadding pad"   >
+                    <!--{% block object_list %}{% endblock %}-->
+                    {% include 'object_list.html' %}
+                </div>
+                <div class="col-md-10 nopadding main_area"></div>
+             </div>
+
+            <div id="groups" class="tab-pane fade">
+                <div class="col-md-2  nopadding pad">
+                    {% include 'object_list.html' %}
+                </div>
+                <div class="col-md-10 nopadding main_area"></div>
+             </div>
+
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="height_footer scroll-footer"></div>
+    </div>
 
 </div>
 

@@ -1,0 +1,65 @@
+body{
+overflow: auto ;
+}
+
+.scroll-list_group{
+  border: 1px solid rgba(0,255,0,0.7);
+  #overflow: scroll !important;
+  overflow: scroll ;
+  height: 100%;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+/*
+.list-area {
+  height:70%;
+  width: 15%;
+  float:left;
+  position:absolute;
+  background: pink;
+  margin : 5px;
+  clear:right;
+   border-radius: 5px;
+   background: #ccc;
+}
+*/
+
+
+.list-group{
+  # border: 1px solid rgba(0,255,0,0.7);
+  #height: 100%;
+  border-radius: 5px;
+  padding: 0px;
+  margin: 0px;
+
+  font-weight: bold;
+  font-style:oblique;
+  background: #ccc;
+  #float:right;
+  #min-width: 100px;
+  #max-width: 200px;
+}
+
+
+.active-item{
+  background: rgba(10,100,255,0.7); /* Цвет фона */
+}
+
+.scroll-area{
+  height: 100%;
+  #position:relative;
+  border: 1px solid rgba(0,255,0,0.7);
+  border-radius: 5px;
+  overflow: scroll ;
+  #overflow:auto;
+}
+
+.list_item:nth-child(2n) {
+#background: #777 !important;
+ background: rgba(0,100,0,0.7); /* Цвет фона */
+ #color:rgba(0,255,0,0.7); /* Цвет фона */
+}
+.list_item:hover {
+          background: rgba(3,0,255,0.7); /* Цвет фона */
+}
